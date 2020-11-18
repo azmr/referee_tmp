@@ -1,0 +1,14 @@
+
+== Lifetime knowledge
+
+== Size knowledge
+=== Fixed
+- (max) known at compile time (could use fixed length array)
+- known for class of objects early in runtime (can allocate the same size each time)
+- known when first using object (arena push)
+- max known when starting object, processing done, then actual number known (arena grow to max, then shrink to actual)
+- as above, but other stuff allocated in the meantime (multiple arenas or dynamic memory)
+- no maximum known when starting, but after processing the size never changes (multiple pushes to arena or dynamic)
+
+=== Dynamic
+- array can be added to in any order/at any point
