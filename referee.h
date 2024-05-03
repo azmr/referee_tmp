@@ -194,7 +194,7 @@ ref_info(Referee *ref, void *ptr)
 
 REFEREE_API size_t
 ref_count(Referee *ref, void *ptr)
-{   
+{
     RefInfo *info = ref_info(ref, ptr);
     return (info
             ? info->refcount
@@ -381,7 +381,7 @@ ref_free(Referee *ref, void *ptr)
 }
 
 // clear all that have a refcount of 0
-REFEREE_API size_t 
+REFEREE_API size_t
 ref_purge(Referee *ref)
 {
 	// TODO (opt): this should be sped up by keeping an array of the zero counts
@@ -442,7 +442,7 @@ ref_dump_mem_usage(FILE *out, Referee *ref, int should_destructively_sort)
         n = ref->ptr_infos.n;
         i < n; ++i)
     {
-        Addr    ptr  = ref->ptr_infos.keys[i];
+        void   *ptr  = ref->ptr_infos.keys[i];
         RefInfo info = ref->ptr_infos.vals[i];
 #if REFEREE_DEBUG
         fprintf(out, //"0x%08llx:"
